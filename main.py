@@ -3,7 +3,6 @@ import time, threading
 
 def main():
     threads = []
-    bots = []
     currencies = [
         'BTCUSD',
         'ETHUSD'
@@ -11,12 +10,7 @@ def main():
 
     #Add different trading currencies here
     for i in currencies:
-        bots.append(tradingbot(i))
-
-    
-    for i in bots:
-        threads.append(threading.Thread(target = i.run()))
-
+        threads.append(tradingbot(i))
 
     for i in threads:
         i.start()

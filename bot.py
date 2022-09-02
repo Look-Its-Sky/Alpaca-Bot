@@ -3,7 +3,7 @@ from tradingtools import *
 from threading import *
 import time
 
-def tradingbot(Thread):
+class tradingbot(Thread):
 
     ticker = ''
     shouldRun = True
@@ -50,25 +50,28 @@ def tradingbot(Thread):
     Get current price of the coin
     """
 
-    def currentPrice() -> float:
-        return ttCurrentPrice(ticker)
+    def currentPrice(self) -> float:
+        return ttCurrentPrice(self.ticker)
 
     """"
     Buy function
     """
 
+    def position(self) -> float:
+        return ttgetPostion(self.ticker)
+
     def buy(self, amountInUSD: float):
-        amount = amountInUSD / currentPrice()
-        ttbuy(ticker, amount)
+        amount = amountInUSD / self.currentPrice()
+        ttbuy(self.ticker, amount)
 
     def sell(self, amountInUSD: float):
-        amount = amountInUSD / currentPrice()
+        amount = amountInUSD / self.currentPrice()
 
     def autoBuy(self):
-        ttbuy(ticker, ttgetPostion/3)
+        ttbuy(self.ticker, ttgetPostion(ticker = self.ticker)/3)
 
     def autoSell(self):
-        ttsell(ticker, ttgetPostion/3)
+        ttsell(self.ticker, ttgetPostion()/3)
 
     """
     Get difference between two times
@@ -101,7 +104,7 @@ def tradingbot(Thread):
     """
     def getTimeTakenForMilestone(self):
         for i in range(len(self.terms.get("prices"))):
-            if shouldSell():
+            if self.shouldSell():
                 return i * 5 #Goal met
 
         return -1 #Goal not met
@@ -114,11 +117,11 @@ def tradingbot(Thread):
 
     #Put algorithmic stuff here
     def update(self):
-        if(shouldBuy):
-            autoBuy()
+        if(self.shouldBuy):
+            self.autoBuy()
         
-        if(shouldSell): 
-            autoSell()
+        if(self.shouldSell): 
+            self.autoSell()
 
     #On terminate
     def terminate(self):
@@ -126,7 +129,7 @@ def tradingbot(Thread):
 
     def run(self):
         while self.shouldRun:
-            update()
+            self.update()
     
         if not self.shouldRun:
-            terminate()
+            self.terminate()
