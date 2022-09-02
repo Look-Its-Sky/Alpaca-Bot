@@ -1,8 +1,9 @@
 from datetime import date, datetime
 from tradingtools import *
-import threading, time
+from threading import *
+import time
 
-def bot(Thread):
+def tradingbot(Thread):
 
     ticker = ''
     shouldRun = True
@@ -31,7 +32,7 @@ def bot(Thread):
     """
 
     def __init__(self, ticker) -> None:
-        threading.Thread.__init__(self)
+        Thread.__init__(self)
         self.ticker = ticker
 
         self.terms.update(
@@ -62,6 +63,12 @@ def bot(Thread):
 
     def sell(self, amountInUSD: float):
         amount = amountInUSD / currentPrice()
+
+    def autoBuy(self):
+        ttbuy(ticker, ttgetPostion/3)
+
+    def autoSell(self):
+        ttsell(ticker, ttgetPostion/3)
 
     """
     Get difference between two times
@@ -107,8 +114,11 @@ def bot(Thread):
 
     #Put algorithmic stuff here
     def update(self):
-        pass
-
+        if(shouldBuy):
+            autoBuy()
+        
+        if(shouldSell): 
+            autoSell()
 
     #On terminate
     def terminate(self):

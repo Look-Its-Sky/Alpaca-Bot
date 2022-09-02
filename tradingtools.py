@@ -14,7 +14,7 @@ def ttbuy(self, ticker, amount) -> None:
 def ttsell(self, ticker, amount) -> None:
     api.submit_order(ticker, qty = amount, side = 'sell', time_in_force = buytype)
 
-def ttgetPostiion(self, ticker) -> float:
+def ttgetPostion(self, ticker) -> float:
     return float(api.get_position(ticker).qty)
 
 def ttGetPrice(self, ticker) -> float:

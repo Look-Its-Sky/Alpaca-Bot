@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/Users/jude/Documents/Alpaca Bot /.venv/bin/python3" "$0" "$@"
+'''exec' "/Users/jude/Documents/Alpaca Bot /.venv/bin/python3.10" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
