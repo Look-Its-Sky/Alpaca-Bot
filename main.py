@@ -4,8 +4,7 @@ import time, threading
 def main():
     threads = []
     currencies = [
-        'BTCUSD',
-        'ETHUSD'
+        'BTCUSD'
     ]
 
     #Add different trading currencies here

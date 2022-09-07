@@ -119,9 +119,15 @@ class tradingbot(Thread):
     def update(self):
         if(self.shouldBuy):
             self.autoBuy()
+            print("Buy at ", datetime.now())
         
-        if(self.shouldSell): 
+        elif(self.shouldSell): 
             self.autoSell()
+            print("Sell at ", datetime.now())
+
+        else:
+            print("Nothing at ", datetime.now())
+        
 
     #On terminate
     def terminate(self):
