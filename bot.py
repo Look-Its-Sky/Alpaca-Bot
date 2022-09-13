@@ -40,9 +40,6 @@ class tradingbot(Thread):
 
     def update(self):
 
-        self.buy(1)
-        self.sell(1)
-
         #Sell if our coin has increased by 3% or more from our buying point
         #if self.position >= 0 and :
 
